@@ -15,34 +15,37 @@ import objects.dynasty.Dynasty;
 import objects.figure.Figure;
 import objects.figure.King;
 
+@SuppressWarnings("unused")
 public class ReadJson {
     private ObservableList<King> kingList = FXCollections.observableArrayList();
-    private ObservableList<Figure> figureList = FXCollections.observableArrayList();
-    private ObservableList<Dynasty> dynastyList = FXCollections.observableArrayList();
+//    private ObservableList<Figure> figureList = FXCollections.observableArrayList();
+//    private ObservableList<Dynasty> dynastyList = FXCollections.observableArrayList();
 
-    public ObservableList<King> getKingList() {
-        JSONArray dataList = readData("src/data/king.json");
+    @SuppressWarnings("exports")
+	public ObservableList<King> getKingList() {
+        JSONArray dataList = readData("src/data/vua.json");
         for (int i = 0; i < dataList.size(); i++) {
-            kingList.add(new King().parseDataObject((JSONObject) dataList.get(i)));
+            kingList.add((King) new King().parseObject((JSONObject) dataList.get(i)));
         }
+        System.out.println(kingList);
         return kingList;
     }
 
-    public ObservableList<Figure> getFigureList() {
-        JSONArray dataList = readData("src/data/figureUpdate.json");
-        for (int i = 0; i < dataList.size(); i++) {
-            figureList.add(new Figure().parseDataObject((JSONObject) dataList.get(i)));
-        }
-        return figureList;
-    }
-
-    public ObservableList<Dynasty> getDinastyList() {
-        JSONArray dataList = readData("src/data/dynastys.json");
-        for (int i = 0; i < dataList.size(); i++) {
-            dynastyList.add(new Dynasty().parseDataObject((JSONObject) dataList.get(i)));
-        }
-        return dynastyList;
-    }
+//    public ObservableList<Figure> getFigureList() {
+//        JSONArray dataList = readData("src/data/figureUpdate.json");
+//        for (int i = 0; i < dataList.size(); i++) {
+//            figureList.add(new Figure().parseDataObject((JSONObject) dataList.get(i)));
+//        }
+//        return figureList;
+//    }
+//
+//    public ObservableList<Dynasty> getDinastyList() {
+//        JSONArray dataList = readData("src/data/dynastys.json");
+//        for (int i = 0; i < dataList.size(); i++) {
+//            dynastyList.add(new Dynasty().parseDataObject((JSONObject) dataList.get(i)));
+//        }
+//        return dynastyList;
+//    }
 
     @SuppressWarnings("unchecked")
     public JSONArray readData(String path) {

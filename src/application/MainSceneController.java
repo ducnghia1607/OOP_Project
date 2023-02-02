@@ -47,6 +47,12 @@ public class MainSceneController{
     @FXML
     private MenuButton selectionField;
     
+    ReadJson reader;
+    
+    public void setDataJson(ReadJson reader_param) {
+    	reader = reader_param;
+    }
+    
     @FXML
     void clickMenuItem(ActionEvent event) {
     	MenuItem menuItem = (MenuItem) event.getSource();
@@ -54,8 +60,9 @@ public class MainSceneController{
         PopUpWinDow newPopUp = new PopUpWinDow();
         selectionField.setText(lableSelectItem);
         switch (lableSelectItem) {
-        	case "Nhân Vật Lịch Sử":
-        		searchField.setPromptText("Tên nhân vật");
+        	case "Vua":
+        		searchField.setPromptText("Tên vua");
+        		resultField.setText(reader.getKingList().get(0).getTen());
                 break;
 
         }
