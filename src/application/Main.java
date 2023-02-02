@@ -16,6 +16,12 @@ public class Main extends Application {
 	@SuppressWarnings("exports")
 	@Override
 	public void start(Stage primaryStage) {
+		initializeScene(primaryStage);
+		
+	}
+	
+	void initializeScene(Stage primaryStage) {
+
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/MainScene.fxml"));
 			// Group root = new Group();
