@@ -99,6 +99,10 @@ public class King extends HistoricalFigure implements ParseJSON {
 	public void setNamTriVi(String namTriVi) {
 		this.namTriVi = namTriVi;
 	}
+	
+	public String getName() {
+		return ten;
+	}
 
 	@Override
 	public King parseObject(JSONObject data) {

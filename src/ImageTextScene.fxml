@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="imageTextScene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextArea fx:id="textArea" layoutX="6.0" layoutY="5.0" prefHeight="400.0" prefWidth="344.0" wrapText="true" />
+      <Label fx:id="imgCaption" alignment="CENTER" layoutX="359.0" layoutY="285.0" prefHeight="111.0" prefWidth="232.0" wrapText="true">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="image" fitHeight="278.0" fitWidth="232.0" layoutX="359.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

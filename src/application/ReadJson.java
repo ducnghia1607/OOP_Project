@@ -11,44 +11,82 @@ import org.json.simple.parser.ParseException;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import objects.dynasty.Dynasty;
-import objects.figure.Figure;
-import objects.figure.King;
+import objects.figure.*;
 
-@SuppressWarnings("unused")
 public class ReadJson {
-    private ObservableList<King> kingList = FXCollections.observableArrayList();
+    private static ObservableList<King> kingList = FXCollections.observableArrayList();
 //    private ObservableList<Figure> figureList = FXCollections.observableArrayList();
 //    private ObservableList<Dynasty> dynastyList = FXCollections.observableArrayList();
 
     @SuppressWarnings("exports")
-	public ObservableList<King> getKingList() {
+	public static ObservableList<King> getKingList() {
+    	kingList.clear();
         JSONArray dataList = readData("src/data/vua.json");
         for (int i = 0; i < dataList.size(); i++) {
-            kingList.add((King) new King().parseObject((JSONObject) dataList.get(i)));
+        	King tmp_king = (King) new King().parseObject((JSONObject) dataList.get(i));
+            if (kingList.contains(tmp_king) == false && tmp_king.getTen() != "") kingList.add(tmp_king);
         }
         System.out.println(kingList);
         return kingList;
     }
 
-//    public ObservableList<Figure> getFigureList() {
-//        JSONArray dataList = readData("src/data/figureUpdate.json");
-//        for (int i = 0; i < dataList.size(); i++) {
-//            figureList.add(new Figure().parseDataObject((JSONObject) dataList.get(i)));
-//        }
-//        return figureList;
-//    }
-//
-//    public ObservableList<Dynasty> getDinastyList() {
-//        JSONArray dataList = readData("src/data/dynastys.json");
-//        for (int i = 0; i < dataList.size(); i++) {
-//            dynastyList.add(new Dynasty().parseDataObject((JSONObject) dataList.get(i)));
-//        }
-//        return dynastyList;
-//    }
+    @SuppressWarnings("exports")
+	public static ObservableList<Place2> getPlace2List() {
+        ObservableList<Place2> place2List = FXCollections.observableArrayList();
+        JSONArray dataList = readData("src/data/dia_danh_2.json");
+        for (int i = 0; i < dataList.size(); i++) {
+            place2List.add((Place2) new Place2().parseObject((JSONObject) dataList.get(i)));
+        }
+        System.out.println(place2List);
+        return place2List;
+    }
+    
+    @SuppressWarnings("exports")
+	public static ObservableList<TrieuDai> getTrieuDaiList() {
+        ObservableList<TrieuDai> trieuDaiList = FXCollections.observableArrayList();
+        JSONArray dataList = readData("src/data/trieu_dai.json");
+        for (int i = 0; i < dataList.size(); i++) {
+            trieuDaiList.add((TrieuDai) new TrieuDai().parseObject((JSONObject) dataList.get(i)));
+        }
+        System.out.println(trieuDaiList);
+        return trieuDaiList;
+    }
 
-    @SuppressWarnings("unchecked")
-    public JSONArray readData(String path) {
+    @SuppressWarnings("exports")
+	public static ObservableList<SuKien> getSuKienList() {
+        ObservableList<SuKien> suKienList = FXCollections.observableArrayList();
+        JSONArray dataList = readData("src/data/su_kien.json");
+        for (int i = 0; i < dataList.size(); i++) {
+            suKienList.add((SuKien) new SuKien().parseObject((JSONObject) dataList.get(i)));
+        }
+        System.out.println(suKienList);
+        return suKienList;
+    }
+    
+    @SuppressWarnings("exports")
+	public static ObservableList<Figure> getFigureList() {
+        ObservableList<Figure> figureList = FXCollections.observableArrayList();
+        JSONArray dataList = readData("src/data/nhan_vat.json");
+        for (int i = 0; i < dataList.size(); i++) {
+            figureList.add((Figure) new Figure().parseObject((JSONObject) dataList.get(i)));
+        }
+        System.out.println(figureList);
+        return figureList;
+    }
+    @SuppressWarnings("exports")
+	public static ObservableList<Festival> getFestivalList() {
+        ObservableList<Festival> festivalList = FXCollections.observableArrayList();
+        JSONArray dataList = readData("src/data/le_hoi.json");
+        for (int i = 0; i < dataList.size(); i++) {
+            festivalList.add((Festival) new Festival().parseObject((JSONObject) dataList.get(i)));
+        }
+        System.out.println(festivalList);
+        return festivalList;
+    }
+
+
+    @SuppressWarnings({ "exports" })
+    public static JSONArray readData(String path) {
         // JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
         JSONArray dataList = null;

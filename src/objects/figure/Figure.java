@@ -1,174 +1,140 @@
 package objects.figure;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 // import javafx.scene.chart.Axis.TickMark;
 import objects.ParseJSON;
-import objects.dynasty.Dynasty;
 
-public class Figure extends HistoricalFigure implements ParseJSON {
-	private String queQuan;
-	private String danToc;
-	private String namNhapNgu;
-	private String ghiChu;
-	private String namDoTrangNguyen;
-	private String tenKhac;
-	private King doiVua;
+public class Figure implements ParseJSON {
+	private String imgCaption;
+    private String[] relativePersonsName;
+    private String[] relativePlacesName;
+    private String imgFilename;
+    private String name;
+    private String deathDate;
+    private String birthDate;
+    private String desc;
 
-	public String getTenKhac() {
-		return tenKhac;
-	}
+    public Figure() {
+    }
 
-	private ArrayList<Dynasty> trieuDai = new ArrayList<Dynasty>();
+    public Figure(String imgCaption, String[] relativePersonsName, String[] relativePlacesName, String imgFilename, String name, String deathDate, String birthDate, String desc) {
+        this.imgCaption = imgCaption;
+        this.relativePersonsName = relativePersonsName;
+        this.relativePlacesName = relativePlacesName;
+        this.imgFilename = imgFilename;
+        this.name = name;
+        this.deathDate = deathDate;
+        this.birthDate = birthDate;
+        this.desc = desc;
+    }
 
-	public void setTenKhac(String tenKhac) {
-		this.tenKhac = tenKhac;
-	}
-
-	// public Figure(String ten, String namSinh, String namMat, String queQuan,
-	// String danToc, String namNhapNgu,
-	// String ghiChu, String namDoTrangNguyen, King doiVua) {
-	// super(ten, namSinh, namMat);
-	// this.queQuan = queQuan;
-	// this.danToc = danToc;
-	// this.namNhapNgu = namNhapNgu;
-	// this.ghiChu = ghiChu;
-	// this.namDoTrangNguyen = namDoTrangNguyen;
-	// this.doiVua = doiVua;
-	// }
-
-	public Figure(String ten, String namSinh, String namMat, String queQuan, String danToc, String namNhapNgu,
-			String ghiChu, String namDoTrangNguyen) {
-		super(ten, namSinh, namMat);
-		this.queQuan = queQuan;
-		this.danToc = danToc;
-		this.namNhapNgu = namNhapNgu;
-		this.ghiChu = ghiChu;
-		this.namDoTrangNguyen = namDoTrangNguyen;
-
-	}
-
-	// public Figure(String queQuan, String danToc, String namNhapNgu, String
-	// ghiChu, String namDoTrangNguyen,
-	// King doiVua) {
-	// this.queQuan = queQuan;
-	// this.danToc = danToc;
-	// this.namNhapNgu = namNhapNgu;
-	// this.ghiChu = ghiChu;
-	// this.namDoTrangNguyen = namDoTrangNguyen;
-	// this.doiVua = doiVua;
-	// }
-
-	public Figure(String ten, String queQuan, String danToc, String namNhapNgu, String ghiChu,
-			String namDoTrangNguyen) {
-		super(ten);
-		this.queQuan = queQuan;
-		this.danToc = danToc;
-		this.namNhapNgu = namNhapNgu;
-		this.ghiChu = ghiChu;
-		this.namDoTrangNguyen = namDoTrangNguyen;
-	}
-
-	public Figure(String ten, String namSinh, String namMat, String queQuan, String ghiChu, String tenKhac,
-			ArrayList<Dynasty> trieuDai) {
-		super(ten, namSinh, namMat);
-		this.queQuan = queQuan;
-		this.ghiChu = ghiChu;
-		this.tenKhac = tenKhac;
-		this.trieuDai = trieuDai;
-	}
-
-	public Figure() {
-	}
-
-	public String getNamDoTrangNguyen() {
-		return namDoTrangNguyen;
-	}
-
-	public void setNamDoTrangNguyen(String namDoTrangNguyen) {
-		this.namDoTrangNguyen = namDoTrangNguyen;
-	}
-
-	public King getDoiVua() {
-		return doiVua;
-	}
-
-	public void setDoiVua(King doiVua) {
-		this.doiVua = doiVua;
-	}
-
-	public Figure(String ten) {
-		super(ten);
-	}
-
-	public Figure(String ten, String namSinh, String namMat) {
-		super(ten, namSinh, namMat);
-	}
-
-	public String getQueQuan() {
-		return queQuan;
-	}
-
-	public void setQueQuan(String queQuan) {
-		this.queQuan = queQuan;
-	}
-
-	public String getDanToc() {
-		return danToc;
-	}
-
-	public void setDanToc(String danToc) {
-		this.danToc = danToc;
-	}
-
-	public String getNamNhapNgu() {
-		return namNhapNgu;
-	}
-
-	public void setNamNhapNgu(String namPhongChuc) {
-		this.namNhapNgu = namPhongChuc;
-	}
-
-	public String getGhiChu() {
-		return ghiChu;
-	}
-
-	public void setGhiChu(String ghiChu) {
-		this.ghiChu = ghiChu;
-	}
-
-	public ArrayList<Dynasty> getTrieuDai() {
-		return trieuDai;
-	}
-
-	public void setTrieuDai(ArrayList<Dynasty> trieuDai) {
-		this.trieuDai = trieuDai;
-	}
-
+    @SuppressWarnings("unchecked")
 	@Override
-	public Figure parseDataObject(JSONObject data) {
-		String ten = (String) data.get("ten");
-		String queQuan = (String) data.get("queQuan");
-		String tenKhac = (String) data.get("tenKhac");
-		String ghiChu = (String) data.get("ghiChu");
-		ArrayList<Dynasty> trieuDai = new ArrayList<Dynasty>();
-		JSONArray trieuDais = (JSONArray) data.get("trieuDai");
-		for (int i = 0; i < trieuDais.size(); i++) {
-			JSONObject TD = (JSONObject) trieuDais.get(i);
-			 Dynasty newDynasty = new Dynasty((String) TD.get("name"));
-			 trieuDai.add(newDynasty);
-//			TD.get("name");
-		}
-		// System.out.println(trieuDai);
-		String namSinh = (String) data.get("namSinh");
-		String namMat = (String) data.get("namMat");
+    public Object parseObject(JSONObject data) {
+        String imgCaption = (String) data.get("imgCaption");
+        List<String> list = new ArrayList<>();
+        JSONArray jsonArray = (JSONArray) data.get("relativePersonsName") ;
+        Iterator<String> iterator = jsonArray.iterator();
+        while(iterator.hasNext()) {
+            list.add(iterator.next());
+        }
+        String[] relativePersonsName = list.toArray(new String[0]);
+        list.clear();
+        jsonArray = (JSONArray) data.get("relativePlacesName") ;
+        iterator = jsonArray.iterator();
+        while(iterator.hasNext()) {
+            list.add(iterator.next());
+        }
+        String[] relativePlacesName = list.toArray(new String[0]);
+        String imgFilename = (String) data.get("imgFilename");
+        String name = (String) data.get("name");
+        String deathDate = (String) data.get("deathDate");
+        String birthDate = (String) data.get("birthDate");
+        String desc = (String) data.get("desc");
+        Figure newFigure = new Figure(imgCaption, relativePersonsName, relativePlacesName, imgFilename, name, deathDate, birthDate, desc);
+        return newFigure;
+    }
 
-		Figure newFigure = new Figure(ten, namSinh, namMat, queQuan, ghiChu, tenKhac,
-				trieuDai);
-		return newFigure;
-	}
+    public String getImgCaption() {
+        return imgCaption;
+    }
+
+    public void setImgCaption(String imgCaption) {
+        this.imgCaption = imgCaption;
+    }
+
+    public String[] getRelativePersonsName() {
+        return relativePersonsName;
+    }
+
+    public String getRelativePersonsName_String() {
+    	String str = "";
+    	if (relativePersonsName != null) for (String i : relativePersonsName) str = i + ", " + str;
+        return str;
+    }
+    
+    public void setRelativePersonsName(String[] relativePersonsName) {
+        this.relativePersonsName = relativePersonsName;
+    }
+
+    public String[] getRelativePlacesName() {
+        return relativePlacesName;
+    }
+    
+    public String getRelativePlacesName_String() {
+    	String str = "";
+    	if (relativePersonsName != null) for (String i : relativePlacesName) str = i + ", " + str;
+        return str;
+    }
+
+    public void setRelativePlacesName(String[] relativePlacesName) {
+        this.relativePlacesName = relativePlacesName;
+    }
+
+    public String getImgFilename() {
+        return imgFilename;
+    }
+
+    public void setImgFilename(String imgFilename) {
+        this.imgFilename = imgFilename;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDeathDate() {
+        return deathDate;
+    }
+
+    public void setDeathDate(String deathDate) {
+        this.deathDate = deathDate;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
 
 }

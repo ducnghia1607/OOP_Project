@@ -2,6 +2,7 @@ package objects.festival;
 
 import objects.figure.HistoricalFigure;
 
+@SuppressWarnings("unused")
 public class Festival {
 	private String tenLeHoi;
 	private String thoigian;
@@ -16,6 +17,12 @@ public class Festival {
 	public String getTenLeHoi() {
 		return tenLeHoi;
 	}
+	
+	public String getName() {
+		return tenLeHoi;
+	}
+	
+	
 	public void setTenLeHoi(String tenLeHoi) {
 		this.tenLeHoi = tenLeHoi;
 	}
