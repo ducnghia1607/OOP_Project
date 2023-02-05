@@ -9,17 +9,17 @@ import org.json.simple.JSONObject;
 
 import objects.ParseJSON;
 
-public class TrieuDai implements ParseJSON{
+public class Dynasty implements ParseJSON{
 	private String name;
     private String[] relativePersonsName;
     private String[] relativeDynastysName;
     private String[] relativeEventsName;
     private String desc;
 
-    public TrieuDai() {
+    public Dynasty() {
     }
 
-    public TrieuDai(String name, String[] relativePersonsName, String[] relativeDynastysName, String[] relativeEventsName, String desc) {
+    public Dynasty(String name, String[] relativePersonsName, String[] relativeDynastysName, String[] relativeEventsName, String desc) {
         this.name = name;
         this.relativePersonsName = relativePersonsName;
         this.relativeDynastysName = relativeDynastysName;
@@ -53,7 +53,7 @@ public class TrieuDai implements ParseJSON{
         }
         String[] relativeEventsName = list.toArray(list.toArray(new String[0]));
         String desc = (String) data.get("desc");
-        TrieuDai newTrieuDai = new TrieuDai(name, relativePersonsName, relativeDynastysName, relativeEventsName, desc);
+        Dynasty newTrieuDai = new Dynasty(name, relativePersonsName, relativeDynastysName, relativeEventsName, desc);
         return newTrieuDai;
     }
 

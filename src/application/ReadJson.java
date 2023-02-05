@@ -42,22 +42,22 @@ public class ReadJson {
     }
     
     @SuppressWarnings("exports")
-	public static ObservableList<TrieuDai> getTrieuDaiList() {
-        ObservableList<TrieuDai> trieuDaiList = FXCollections.observableArrayList();
+	public static ObservableList<Dynasty> getTrieuDaiList() {
+        ObservableList<Dynasty> trieuDaiList = FXCollections.observableArrayList();
         JSONArray dataList = readData("src/data/trieu_dai.json");
         for (int i = 0; i < dataList.size(); i++) {
-            trieuDaiList.add((TrieuDai) new TrieuDai().parseObject((JSONObject) dataList.get(i)));
+            trieuDaiList.add((Dynasty) new Dynasty().parseObject((JSONObject) dataList.get(i)));
         }
         System.out.println(trieuDaiList);
         return trieuDaiList;
     }
 
     @SuppressWarnings("exports")
-	public static ObservableList<SuKien> getSuKienList() {
-        ObservableList<SuKien> suKienList = FXCollections.observableArrayList();
+	public static ObservableList<Event> getSuKienList() {
+        ObservableList<Event> suKienList = FXCollections.observableArrayList();
         JSONArray dataList = readData("src/data/su_kien.json");
         for (int i = 0; i < dataList.size(); i++) {
-            suKienList.add((SuKien) new SuKien().parseObject((JSONObject) dataList.get(i)));
+            suKienList.add((Event) new Event().parseObject((JSONObject) dataList.get(i)));
         }
         System.out.println(suKienList);
         return suKienList;

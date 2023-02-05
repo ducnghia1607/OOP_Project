@@ -10,7 +10,7 @@ import org.json.simple.JSONObject;
 
 import objects.ParseJSON;
 
-public class SuKien implements ParseJSON{
+public class Event implements ParseJSON{
 	private String result;
     private String imgCaption;
     private String[] relativePersonsName;
@@ -20,10 +20,10 @@ public class SuKien implements ParseJSON{
     private String place;
     private String desc;
 
-    public SuKien() {
+    public Event() {
     }
 
-    public SuKien(String result, String imgCaption, String[] relativePersonsName, String imgFilename, String name, String time, String place, String desc) {
+    public Event(String result, String imgCaption, String[] relativePersonsName, String imgFilename, String name, String time, String place, String desc) {
         this.result = result;
         this.imgCaption = imgCaption;
         this.relativePersonsName = relativePersonsName;
@@ -51,7 +51,7 @@ public class SuKien implements ParseJSON{
         String time = (String) data.get("time");
         String place = (String) data.get("place");
         String desc = (String) data.get("desc");
-        SuKien newSuKien = new SuKien(result, imgCaption, relativePersonsName, imgFilename, name, time, place, desc);
+        Event newSuKien = new Event(result, imgCaption, relativePersonsName, imgFilename, name, time, place, desc);
         return newSuKien;
     }
 

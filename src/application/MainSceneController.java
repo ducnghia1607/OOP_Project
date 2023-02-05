@@ -87,8 +87,8 @@ public class MainSceneController implements Initializable{
     private ObservableList<King> kingList = ReadJson.getKingList();
     private ObservableList<Place2> place2List = ReadJson.getPlace2List();
     private ObservableList<Festival> festivalList = ReadJson.getFestivalList();
-    private ObservableList<TrieuDai> trieuDaiList = ReadJson.getTrieuDaiList();
-    private ObservableList<SuKien> suKienList = ReadJson.getSuKienList();
+    private ObservableList<Dynasty> trieuDaiList = ReadJson.getTrieuDaiList();
+    private ObservableList<Event> suKienList = ReadJson.getSuKienList();
     private ObservableList<Figure> figureList = ReadJson.getFigureList();
 
     private ObservableList<String> nameKingList = FXCollections.observableArrayList();
@@ -127,10 +127,10 @@ public class MainSceneController implements Initializable{
         for(Place2 place2 : place2List){
             namePlace2List.add(place2.getName());
         }
-        for(TrieuDai trieuDai : trieuDaiList){
+        for(Dynasty trieuDai : trieuDaiList){
             nameTrieuDaiList.add(trieuDai.getName());
         }
-        for(SuKien suKien : suKienList){
+        for(Event suKien : suKienList){
             nameSuKienList.add(suKien.getName());
         }
         for(Festival festival : festivalList){
@@ -169,6 +169,7 @@ public class MainSceneController implements Initializable{
 	
     public void mouseClick() {
         String item = choiceBox.getValue();
+        
 
         if(item.equals(items[0])){
         	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/textArea.fxml"));
@@ -273,10 +274,10 @@ public class MainSceneController implements Initializable{
             listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
                 @Override
                 public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                    TrieuDai selectedTrieuDai = new TrieuDai();
+                    Dynasty selectedTrieuDai = new Dynasty();
                     String nameTrieuDai = listView.getSelectionModel().getSelectedItem();
                     if(nameTrieuDai != null) {
-                        for (TrieuDai trieuDai : trieuDaiList) {
+                        for (Dynasty trieuDai : trieuDaiList) {
                             if (nameTrieuDai.equals(trieuDai.getName())) {
                                 selectedTrieuDai = trieuDai;
                             }
@@ -356,10 +357,10 @@ public class MainSceneController implements Initializable{
             listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
                 @Override
                 public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                    SuKien selectedSuKien = new SuKien();
+                    Event selectedSuKien = new Event();
                     String nameSuKien = listView.getSelectionModel().getSelectedItem();
                     if(nameSuKien != null) {
-                        for (SuKien suKien : suKienList) {
+                        for (Event suKien : suKienList) {
                             if (nameSuKien.equals(suKien.getName())) {
                                 selectedSuKien = suKien;
                             }

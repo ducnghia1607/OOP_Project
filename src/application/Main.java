@@ -41,7 +41,9 @@ public class Main extends Application {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/MainScene.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         primaryStage.setTitle("Lịch sử Việt Nam");
+
         primaryStage.setScene(scene);
+
         primaryStage.show();
 	}
 	
