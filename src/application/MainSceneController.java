@@ -89,7 +89,7 @@ public class MainSceneController implements Initializable{
     private ObservableList<Festival> festivalList = ReadJson.getFestivalList();
     private ObservableList<Dynasty> trieuDaiList = ReadJson.getTrieuDaiList();
     private ObservableList<Event> suKienList = ReadJson.getSuKienList();
-    private ObservableList<Figure> figureList = ReadJson.getFigureList();
+    private ObservableList<Model> figureList = ReadJson.getFigureList();
 
     private ObservableList<String> nameKingList = FXCollections.observableArrayList();
     private ObservableList<String> namePlace2List = FXCollections.observableArrayList();
@@ -136,7 +136,7 @@ public class MainSceneController implements Initializable{
         for(Festival festival : festivalList){
             nameFestivalList.add(festival.getName());
         }
-        for(Figure figure : figureList){
+        for(Model figure : figureList){
             nameFigureList.add(figure.getName());
         }
         textArea.setEditable(false);
@@ -422,10 +422,10 @@ public class MainSceneController implements Initializable{
             listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
                 @Override
                 public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                    Figure selectedFigure = new Figure();
+                    Model selectedFigure = new Model();
                     String nameFigure = listView.getSelectionModel().getSelectedItem();
                     if(nameFigure != null) {
-                        for (Figure figure : figureList) {
+                        for (Model figure : figureList) {
                             if (nameFigure.equals(figure.getName())) {
                                 selectedFigure = figure;
                             }

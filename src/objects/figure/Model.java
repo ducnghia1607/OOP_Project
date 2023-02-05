@@ -10,7 +10,7 @@ import org.json.simple.JSONObject;
 // import javafx.scene.chart.Axis.TickMark;
 import objects.ParseJSON;
 
-public class Figure implements ParseJSON {
+public class Model implements ParseJSON {
 	private String imgCaption;
     private String[] relativePersonsName;
     private String[] relativePlacesName;
@@ -20,10 +20,10 @@ public class Figure implements ParseJSON {
     private String birthDate;
     private String desc;
 
-    public Figure() {
+    public Model() {
     }
 
-    public Figure(String imgCaption, String[] relativePersonsName, String[] relativePlacesName, String imgFilename, String name, String deathDate, String birthDate, String desc) {
+    public Model(String imgCaption, String[] relativePersonsName, String[] relativePlacesName, String imgFilename, String name, String deathDate, String birthDate, String desc) {
         this.imgCaption = imgCaption;
         this.relativePersonsName = relativePersonsName;
         this.relativePlacesName = relativePlacesName;
@@ -57,7 +57,7 @@ public class Figure implements ParseJSON {
         String deathDate = (String) data.get("deathDate");
         String birthDate = (String) data.get("birthDate");
         String desc = (String) data.get("desc");
-        Figure newFigure = new Figure(imgCaption, relativePersonsName, relativePlacesName, imgFilename, name, deathDate, birthDate, desc);
+        Model newFigure = new Model(imgCaption, relativePersonsName, relativePlacesName, imgFilename, name, deathDate, birthDate, desc);
         return newFigure;
     }
 

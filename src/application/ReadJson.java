@@ -64,11 +64,11 @@ public class ReadJson {
     }
     
     @SuppressWarnings("exports")
-	public static ObservableList<Figure> getFigureList() {
-        ObservableList<Figure> figureList = FXCollections.observableArrayList();
+	public static ObservableList<Model> getFigureList() {
+        ObservableList<Model> figureList = FXCollections.observableArrayList();
         JSONArray dataList = readData("src/data/nhan_vat.json");
         for (int i = 0; i < dataList.size(); i++) {
-            figureList.add((Figure) new Figure().parseObject((JSONObject) dataList.get(i)));
+            figureList.add((Model) new Model().parseObject((JSONObject) dataList.get(i)));
         }
         System.out.println(figureList);
         return figureList;
