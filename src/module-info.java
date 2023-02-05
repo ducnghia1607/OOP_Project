@@ -6,4 +6,6 @@ module Gui {
 	requires json.simple;
 	exports application;
 	opens application;
+	exports controller;
+	opens controller;
 }
